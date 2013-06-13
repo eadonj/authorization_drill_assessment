@@ -4,7 +4,7 @@ $(document).ready(function () {
 
   $(signIn).on('click', function(e) {
     e.preventDefault();
-    
+
     var authenticate_user = $.ajax({
       method: "POST",
       url: "/sessions",
@@ -12,21 +12,19 @@ $(document).ready(function () {
     });
 
     authenticate_user.done(function() {
-      window.location = "/"; 
+     window.location = "/";
     });
   });
 
   // send an HTTP DELETE request for the sign-out link
-  $('a#sign-out').on("click", function (e) {
-    e.preventDefault();
+  $('#sign-out').on("click", function(e) {
+      e.preventDefault();
 
-    var request = $.ajax({ 
-      url: $(this).attr('href'), 
-      type: 'delete' 
-    });
-
-    request.done(function () { 
-      window.location = "/"; 
+    $.ajax({
+       url: $(this).attr('href'),
+       type: "delete"
+     }).done(function() {
+       window.location = '/';
     });
   });
 
