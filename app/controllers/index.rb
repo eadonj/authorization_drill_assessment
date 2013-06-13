@@ -10,18 +10,13 @@ get '/sessions/new' do
 end
 
 post '/sessions' do
-  @user = User.find_by_email(params[:email])
-  if @user.password == params[:password]
-    session[:user_id] = @user.id 
-    redirect '/'
-  else
-    redirect '/'
-  end
+  @user = User.authenticate(params[:email], params[:password])
+  session[:user_id] = @user.id if @user
+  redirect '/'
 end
 
 delete '/sessions/:id' do
   session.clear
-  # redirect '/sessions/new'
 end
 
 #----------- USERS -----------

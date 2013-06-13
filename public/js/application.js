@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-  var signIn = "a#sign-in";
+  var signIn = "#sign-in";
+  var signOut = "#sign-out";
 
   $(signIn).on('click', function(e) {
     e.preventDefault();
@@ -17,7 +18,7 @@ $(document).ready(function () {
   });
 
   // send an HTTP DELETE request for the sign-out link
-  $('#sign-out').on("click", function(e) {
+  $(signOut).on("click", function(e) {
       e.preventDefault();
 
     $.ajax({
